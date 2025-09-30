@@ -2,17 +2,26 @@
   "version": 2,
   "builds": [
     {
+      "src": "api/main.py",
+      "use": "@vercel/python"
+    },
+    {
       "src": "package.json",
       "use": "@vercel/next"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/api/main.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/$1"
     }
   ],
   "env": {
-    "NEXT_PUBLIC_API_URL": "@api_url"
+    "SECRET_KEY": "@secret_key",
+    "DEBUG": "false"
   }
 }

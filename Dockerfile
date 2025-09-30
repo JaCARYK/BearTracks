@@ -7,11 +7,11 @@ RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend files
+# Copy backend requirements
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend application code
+# Copy backend code
 COPY backend/ .
 
 # Create uploads directory
